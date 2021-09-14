@@ -1,0 +1,26 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./data.db"
+}
+
+model Translate {
+  hash     String
+  src      String
+  dest     String
+  srcLang  String
+  destLang String
+  level    Int
+  privacy  Int
+  time     DateTime @default(now())
+
+  provider String @default("未知")
+
+  @@unique([hash, provider])
+}
+
+generator client {
+  provider = "prisma-client-js"
+}

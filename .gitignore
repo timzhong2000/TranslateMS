@@ -95,8 +95,8 @@ Thumbs.db
 
 # database
 *.db
-!prisma/schema.prisma
 prisma/*
+!prisma/schema.prisma
 
 # Keep environment variables out of version control
 .env
