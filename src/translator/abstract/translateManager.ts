@@ -9,20 +9,12 @@ import { CacheEngine } from "./cacheEngine";
 import { TranslateEngine } from "./translateEngine";
 
 export abstract class TranslateManager<CacheType> {
-  translateEngine: TranslateEngine = null;
-  cacheEngine: CacheEngine<CacheType> = null;
-  filter: DefaultFilter = null;
-
   constructor(
-    translateEngine: TranslateEngine,
-    cacheEngine: CacheEngine<CacheType>,
-    filter: DefaultFilter
+    protected translateEngine: TranslateEngine,
+    protected cacheEngine: CacheEngine<CacheType>,
+    protected filter: DefaultFilter
   ) {
-    if (!!translateEngine && !!cacheEngine) {
-      this.translateEngine = translateEngine;
-      this.cacheEngine = cacheEngine;
-      this.filter = filter;
-    } else {
+    if (!translateEngine || !cacheEngine) {
       throw new Error("translateEngine or cacheEngine missing");
     }
   }
