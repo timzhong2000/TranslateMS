@@ -11,7 +11,6 @@ import { DefaultFilter } from "../translator/filter/filter";
 import { LangList } from "../translator/langlist";
 import { msgBody } from "../utils/msgBody";
 import { PrismaCache } from "../translator/cacheEngines/prismaCache";
-import { XunfeiTranslatorAPI } from "../translator/translateEngines/xunfeiTranslatorApi";
 import { TencentTranslatorAPI } from "../translator/translateEngines/tencentTranslatorApi";
 
 const router = express.Router();

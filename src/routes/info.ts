@@ -22,14 +22,15 @@ if (CONFIG.google.enabled) {
 if (CONFIG.caiyunapi.enabled) {
   entryList.push({ name: "彩云小译API", value: "caiyunapi" });
 }
+if (CONFIG.xunfeiapi.enabled) {
+  entryList.push({ name: "讯飞翻译API", value: "xunfeiapi" });
+}
+if (CONFIG.tencentapi.enabled) {
+  entryList.push({ name: "腾讯翻译API", value: "tencentapi" });
+}
 
 router.get("/entrys", (_req, res) => {
   res.json(msgBody("获取翻译器列表成功", entryList));
-});
-
-router.get("/", (_req, res) => {
-  const info = CONFIG.serverConfig;
-  res.json(msgBody("获取服务器公开设置信息成功", info));
 });
 
 export default router;
