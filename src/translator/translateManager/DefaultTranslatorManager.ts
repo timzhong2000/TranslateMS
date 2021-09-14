@@ -33,6 +33,7 @@ export class DefaultTranslatorManager<
     srcLang: string,
     destLang: string
   ): Promise<Payload> {
+    // 过滤器部分
     const filterResult = this.filter.exec(src, srcLang);
     switch (filterResult.type) {
       case FilterType.PASS:
@@ -61,6 +62,7 @@ export class DefaultTranslatorManager<
         );
     }
 
+    // 读缓存
     try {
       console.time("readCache");
       return await this.readCache(src, srcLang, destLang);
@@ -70,6 +72,7 @@ export class DefaultTranslatorManager<
       console.timeEnd("readCache");
     }
 
+    // 发请求
     try {
       console.time("translate");
       const payload = await this.translateEngine.translate(
