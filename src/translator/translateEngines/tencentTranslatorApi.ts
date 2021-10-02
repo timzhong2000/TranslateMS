@@ -61,6 +61,7 @@ export class TencentTranslatorAPI extends TranslateEngine {
       );
     }
   }
+  
   setConfig(config: TencentTranslatorAPIConfig): void {
     this.projectId = Number(config.ProjectId);
     const clientConfig = {

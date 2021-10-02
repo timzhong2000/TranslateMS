@@ -4,15 +4,15 @@ import morgan from "morgan";
 
 import CONFIG from "./utils/config";
 
-import info from "./routes/info";
-import baidu from "./routes/baidu";
-import baiduapi from "./routes/baiduapi";
-import google from "./routes/google";
-import caiyunapi from "./routes/caiyunapi";
-import tencentapi from "./routes/tencentapi";
-import xunfeiapi from "./routes/xunfeiapi";
+import info from "./routers/info";
+import baidu from "./routers/baidu";
+import baiduapi from "./routers/baiduapi";
+import google from "./routers/google";
+import caiyunapi from "./routers/caiyunapi";
+import tencentapi from "./routers/tencentapi";
+import xunfeiapi from "./routers/xunfeiapi";
 
-import serviceDiscovery from "./routes/serviceDiscovery";
+import serviceDiscovery from "./routers/serviceDiscovery";
 
 import checkConfig from "./utils/checkConfig";
 
