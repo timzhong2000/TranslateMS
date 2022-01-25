@@ -11,11 +11,22 @@
       "serviceProviderName": "baidu translator"
     },
     "filterSetting": {
-      "banPrefixs": ["Textractor:", "vnreng:", "抓取服务器"],
+      "banPrefixs": [
+        "Textractor:",
+        "vnreng:",
+        "抓取服务器"
+      ],
       "banWords": [],
-      "apis": [""],
-      "regs": ["ban_test"],
-      "removeSpaceLangs": ["jp", "zh"]
+      "apis": [
+        ""
+      ],
+      "regs": [
+        "ban_test"
+      ],
+      "removeSpaceLangs": [
+        "jp",
+        "zh"
+      ]
     }
   },
   "baiduapi": {
@@ -29,11 +40,22 @@
       "serviceProviderName": "baidu translator api"
     },
     "filterSetting": {
-      "banPrefixs": ["Textractor:", "vnreng:", "抓取服务器"],
+      "banPrefixs": [
+        "Textractor:",
+        "vnreng:",
+        "抓取服务器"
+      ],
       "banWords": [],
-      "apis": [""],
-      "regs": ["ban_test"],
-      "removeSpaceLangs": ["jp", "zh"]
+      "apis": [
+        ""
+      ],
+      "regs": [
+        "ban_test"
+      ],
+      "removeSpaceLangs": [
+        "jp",
+        "zh"
+      ]
     }
   },
   "google": {
@@ -45,11 +67,22 @@
       "serviceProviderName": "google translator"
     },
     "filterSetting": {
-      "banPrefixs": ["Textractor:", "vnreng:", "抓取服务器"],
+      "banPrefixs": [
+        "Textractor:",
+        "vnreng:",
+        "抓取服务器"
+      ],
       "banWords": [],
-      "apis": [""],
-      "regs": ["ban_test"],
-      "removeSpaceLangs": ["jp", "zh"]
+      "apis": [
+        ""
+      ],
+      "regs": [
+        "ban_test"
+      ],
+      "removeSpaceLangs": [
+        "jp",
+        "zh"
+      ]
     }
   },
   "caiyunapi": {
@@ -61,11 +94,22 @@
       "serviceProviderName": "caiyun translator api"
     },
     "filterSetting": {
-      "banPrefixs": ["Textractor:", "vnreng:", "抓取服务器"],
+      "banPrefixs": [
+        "Textractor:",
+        "vnreng:",
+        "抓取服务器"
+      ],
       "banWords": [],
-      "apis": [""],
-      "regs": ["ban_test"],
-      "removeSpaceLangs": ["jp", "zh"]
+      "apis": [
+        ""
+      ],
+      "regs": [
+        "ban_test"
+      ],
+      "removeSpaceLangs": [
+        "jp",
+        "zh"
+      ]
     }
   },
   "xunfeiapi": {
@@ -79,11 +123,49 @@
       "serviceProviderName": "xunfei translator api"
     },
     "filterSetting": {
-      "banPrefixs": ["Textractor:", "vnreng:", "抓取服务器"],
+      "banPrefixs": [
+        "Textractor:",
+        "vnreng:",
+        "抓取服务器"
+      ],
       "banWords": [],
-      "apis": [""],
-      "regs": ["ban_test"],
-      "removeSpaceLangs": ["jp", "zh"]
+      "apis": [
+        ""
+      ],
+      "regs": [
+        "ban_test"
+      ],
+      "removeSpaceLangs": [
+        "jp",
+        "zh"
+      ]
+    }
+  },
+  "niutrans": {
+    "enabled": true,
+    "translatorSetting": {
+      "APIKEY": ""
+    },
+    "cacheSetting": {
+      "serviceProviderName": "niutrans api"
+    },
+    "filterSetting": {
+      "banPrefixs": [
+        "Textractor:",
+        "vnreng:",
+        "抓取服务器"
+      ],
+      "banWords": [],
+      "apis": [
+        ""
+      ],
+      "regs": [
+        "ban_test"
+      ],
+      "removeSpaceLangs": [
+        "jp",
+        "zh"
+      ]
     }
   },
   "tencentapi": {
@@ -97,16 +179,27 @@
       "serviceProviderName": "tencent translator api"
     },
     "filterSetting": {
-      "banPrefixs": ["Textractor:", "vnreng:", "抓取服务器"],
+      "banPrefixs": [
+        "Textractor:",
+        "vnreng:",
+        "抓取服务器"
+      ],
       "banWords": [],
-      "apis": [""],
-      "regs": ["ban_test"],
-      "removeSpaceLangs": ["jp", "zh"]
+      "apis": [
+        ""
+      ],
+      "regs": [
+        "ban_test"
+      ],
+      "removeSpaceLangs": [
+        "jp",
+        "zh"
+      ]
     }
   },
   "serverConfig": {
     "listen": "0.0.0.0",
     "port": 3002,
-    "frontend": "http://localhost:3000"
+    "frontend": "*"
   }
 }

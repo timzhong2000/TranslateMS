@@ -1,5 +1,21 @@
 import ISO639_1 from "../types/ISO963";
 
+export function getNiutransLangCode(code: ISO639_1) {
+  switch (code) {
+    case "zh_CN":
+      return "zh";
+    case "zh_TW":
+      return "cht";
+    case "ja":
+      return "ja";
+    case "ru":
+      return "ru";
+    case "en":
+      return "en";
+    default:
+      throw new Error("Unsupport Language"); // 暂时没有添加完成
+  }
+}
 export function getBaiduLangCode(code: ISO639_1 | "auto") {
   switch (code) {
     case "auto":

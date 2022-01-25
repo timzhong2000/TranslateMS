@@ -28,6 +28,9 @@ if (CONFIG.xunfeiapi.enabled) {
 if (CONFIG.tencentapi.enabled) {
   entryList.push({ name: "腾讯翻译API", value: "tencentapi" });
 }
+if (CONFIG.niutrans.enabled) {
+  entryList.push({ name: "小牛翻译API", value: "niutransapi" });
+}
 
 router.get("/entrys", (_req, res) => {
   res.json(msgBody("获取翻译器列表成功", entryList));

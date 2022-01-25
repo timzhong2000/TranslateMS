@@ -38,6 +38,18 @@ export interface BaiduPayload {
   domain: string;
 }
 
+export interface NiutransAPIConfig {
+  APIKEY: string;
+}
+
+export interface NiutransPayload {
+  from: string; 
+  to: string; 
+  apikey: string; 
+  dictNo?: string; 
+  memoryNo?: string
+}
+
 export interface CacheIdentity {
   src: string;
   srcLang: string;

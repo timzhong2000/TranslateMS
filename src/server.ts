@@ -11,7 +11,7 @@ import google from "./routers/google";
 import caiyunapi from "./routers/caiyunapi";
 import tencentapi from "./routers/tencentapi";
 import xunfeiapi from "./routers/xunfeiapi";
-
+import niutransapi from "./routers/niutransapi";
 import serviceDiscovery from "./routers/serviceDiscovery";
 
 import checkConfig from "./utils/checkConfig";
@@ -39,6 +39,7 @@ app.use("/api/google", google);
 app.use("/api/caiyunapi", caiyunapi);
 app.use("/api/tencentapi", tencentapi);
 app.use("/api/xunfeiapi", xunfeiapi);
+app.use("/api/niutransapi", niutransapi)
 
 app.use("/api/servicediscovery", serviceDiscovery);
 
