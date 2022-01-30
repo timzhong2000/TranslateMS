@@ -37,7 +37,7 @@ if (CONFIG["caiyunapi"].enabled) {
 
   router.get("/:srcLang/:destLang/:src", async (req, res) => {
     const { src, srcLang, destLang } = req.params;
-    const dest = await caiyunAPIManager.translate(src, srcLang, destLang);
+    const dest = await caiyunAPIManager.translate(src, decodeURIComponent(srcLang), destLang);
     res.json(msgBody(`获取翻译${dest.success ? "成功" : "失败"}`, dest));
   });
 } else {

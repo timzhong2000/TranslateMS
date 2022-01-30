@@ -37,7 +37,7 @@ if (CONFIG["tencentapi"].enabled) {
 
   router.get("/:srcLang/:destLang/:src", async (req, res) => {
     const { src, srcLang, destLang } = req.params;
-    const payload = await xunfeiAPIManager.translate(src, srcLang, destLang);
+    const payload = await xunfeiAPIManager.translate(src, decodeURIComponent(srcLang), destLang);
     res.json(msgBody("获取翻译成功", payload));
   });
 } else {
