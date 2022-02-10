@@ -43,11 +43,11 @@ export interface NiutransAPIConfig {
 }
 
 export interface NiutransPayload {
-  from: string; 
-  to: string; 
-  apikey: string; 
-  dictNo?: string; 
-  memoryNo?: string
+  from: string;
+  to: string;
+  apikey: string;
+  dictNo?: string;
+  memoryNo?: string;
 }
 
 export interface CacheIdentity {

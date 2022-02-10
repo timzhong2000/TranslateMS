@@ -27,9 +27,7 @@ export function checkPayload(template: any) {
     if (flag) {
       next();
     } else {
-      res
-        .status(400)
-        .json(msgBody("请求参数非法", errParams));
+      res.status(400).json(msgBody("请求参数非法", errParams));
     }
   };
 }

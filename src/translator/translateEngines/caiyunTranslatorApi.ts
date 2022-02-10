@@ -14,10 +14,7 @@ import ISO639_1 from "../../types/ISO963";
 
 export class CaiyunTranslatorAPI extends TranslateEngine {
   private token = "";
-  constructor(
-    private provider: string,
-    config: CaiyunTranslatorAPIConfig
-  ) {
+  constructor(private provider: string, config: CaiyunTranslatorAPIConfig) {
     super();
     if (!!config) {
       this.setConfig(config);

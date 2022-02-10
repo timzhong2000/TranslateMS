@@ -4,7 +4,7 @@
  */
 
 import express from "express";
-import CONFIG from "../../config.json"
+import CONFIG from "../../config.json";
 import { msgBody } from "../utils/msgBody";
 
 const router = express.Router();

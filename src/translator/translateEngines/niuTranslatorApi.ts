@@ -68,7 +68,15 @@ export class NiutransTranslatorAPI extends TranslateEngine {
         "none"
       );
     }
-    const res = await axios.post("https://api.niutrans.com/NiuTransServer/translation", { from: niutrnasSrcLang, to: niutrnasDestLang, apikey: this.APIKEY, src_text: src } as NiutransPayload)
+    const res = await axios.post(
+      "https://api.niutrans.com/NiuTransServer/translation",
+      {
+        from: niutrnasSrcLang,
+        to: niutrnasDestLang,
+        apikey: this.APIKEY,
+        src_text: src,
+      } as NiutransPayload
+    );
     if (!!res && !!res.data) {
       try {
         return generatePayload(
@@ -95,6 +103,6 @@ export class NiutransTranslatorAPI extends TranslateEngine {
   }
 
   setConfig(config: NiutransAPIConfig): void {
-    this.APIKEY = config.APIKEY
+    this.APIKEY = config.APIKEY;
   }
 }

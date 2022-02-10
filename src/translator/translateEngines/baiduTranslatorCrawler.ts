@@ -25,10 +25,7 @@ export class BaiduTranslatorCrawler extends TranslateEngine {
   /**
    * @param config 百度翻译配置
    */
-  constructor(
-    private provider: string,
-    config?: BaiduTranslatorConfig
-  ) {
+  constructor(private provider: string, config?: BaiduTranslatorConfig) {
     super();
     if (!!config) {
       this.configReady = true;

@@ -4,7 +4,7 @@
  */
 
 import express from "express";
-import CONFIG from "../../config.json"
+import CONFIG from "../../config.json";
 
 import { DefaultTranslatorManager } from "../translator/translateManager/DefaultTranslatorManager";
 import { DefaultFilter } from "../translator/filter/filter";
@@ -23,9 +23,7 @@ if (CONFIG["niutrans"].enabled) {
     CONFIG["niutrans"].translatorSetting
   );
   const niutransAPICache = new PrismaCache("小牛翻译API");
-  const niutrnasAPIFilter = new DefaultFilter(
-    CONFIG["niutrans"].filterSetting
-  );
+  const niutrnasAPIFilter = new DefaultFilter(CONFIG["niutrans"].filterSetting);
   const niutransManager = new DefaultTranslatorManager(
     niutransAPI,
     niutransAPICache,
@@ -38,7 +36,11 @@ if (CONFIG["niutrans"].enabled) {
 
   router.get("/:srcLang/:destLang/:src", checkBalance, async (req, res) => {
     const { src, srcLang, destLang } = req.params;
-    const payload = await niutransManager.translate(src, decodeURIComponent(srcLang), destLang);
+    const payload = await niutransManager.translate(
+      src,
+      decodeURIComponent(srcLang),
+      destLang
+    );
     if (CONFIG.serverConfig.requireKey && payload.success) {
       await new Account(req.query.key as string).consume(payload.src.length);
     }

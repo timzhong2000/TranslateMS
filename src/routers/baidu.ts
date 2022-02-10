@@ -40,7 +40,11 @@ if (CONFIG["baidu"].enabled) {
 
   router.get("/:srcLang/:destLang/:src", checkBalance, async (req, res) => {
     const { src, srcLang, destLang } = req.params;
-    const payload = await baiduCrawlerManager.translate(src, decodeURIComponent(srcLang), destLang);
+    const payload = await baiduCrawlerManager.translate(
+      src,
+      decodeURIComponent(srcLang),
+      destLang
+    );
     if (CONFIG.serverConfig.requireKey && payload.success) {
       await new Account(req.query.key as string).consume(payload.src.length);
     }

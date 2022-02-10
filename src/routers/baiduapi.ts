@@ -4,7 +4,7 @@
  */
 
 import express from "express";
-import CONFIG from "../../config.json"
+import CONFIG from "../../config.json";
 
 import { BaiduTranslatorAPI } from "../translator/translateEngines/baiduTranslatorApi";
 import { DefaultTranslatorManager } from "../translator/translateManager/DefaultTranslatorManager";
@@ -38,7 +38,11 @@ if (CONFIG["baiduapi"].enabled) {
 
   router.get("/:srcLang/:destLang/:src", checkBalance, async (req, res) => {
     const { src, srcLang, destLang } = req.params;
-    const payload = await baiduAPIManager.translate(src, decodeURIComponent(srcLang), destLang);
+    const payload = await baiduAPIManager.translate(
+      src,
+      decodeURIComponent(srcLang),
+      destLang
+    );
     if (CONFIG.serverConfig.requireKey && payload.success) {
       await new Account(req.query.key as string).consume(payload.src.length);
     }
