@@ -30,11 +30,15 @@ export class Account {
   }
 
   async charge(count: number) {
-    return await db.account.update({
+    return await db.account.upsert({
       where: {
         key: this.key,
       },
-      data: {
+      create: {
+        key: this.key,
+        balance: count,
+      },
+      update: {
         balance: { increment: count },
       },
     });
