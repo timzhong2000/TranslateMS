@@ -43,6 +43,14 @@ export class Account {
       },
     });
   }
+
+  async destroy() {
+    return await db.account.delete({
+      where: {
+        key: this.key,
+      },
+    });
+  }
 }
 
 // 确定当前额度可以完成此次翻译
