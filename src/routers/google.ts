@@ -4,7 +4,7 @@
  */
 
 import express from "express";
-import CONFIG from "../utils/config";
+import CONFIG from "../../config.json"
 
 import { DefaultTranslatorManager } from "../translator/translateManager/DefaultTranslatorManager";
 import { DefaultFilter } from "../translator/filter/filter";
@@ -12,6 +12,7 @@ import { GoogleTranslatorCrawler } from "../translator/translateEngines/googleTr
 import { LangList } from "../translator/langlist";
 import { PrismaCache } from "../translator/cacheEngines/prismaCache";
 import { msgBody } from "../utils/msgBody";
+import { Account, checkBalance } from "../utils/account";
 
 const router = express.Router();
 
@@ -35,10 +36,13 @@ if (CONFIG["google"].enabled) {
     res.json(msgBody("获取语言列表成功", LangList));
   });
 
-  router.get("/:srcLang/:destLang/:src", async (req, res) => {
+  router.get("/:srcLang/:destLang/:src", checkBalance, async (req, res) => {
     const { src, srcLang, destLang } = req.params;
-    const dest = await googleTranslateManager.translate(src, decodeURIComponent(srcLang), destLang);
-    res.json(msgBody(`获取翻译${dest.success ? "成功" : "失败"}`, dest));
+    const payload = await googleTranslateManager.translate(src, decodeURIComponent(srcLang), destLang);
+    if (CONFIG.serverConfig.requireKey && payload.success) {
+      await new Account(req.query.key as string).consume(payload.src.length);
+    }
+    res.json(msgBody(`获取翻译${payload.success ? "成功" : "失败"}`, payload));
   });
 } else {
   router.use((_req, res) => {

@@ -73,7 +73,7 @@ export interface FilterConfig {
   banPrefixs: string[]; // 前缀过滤
   banWords: string[]; // 词汇过滤
   apis: string[]; // 违禁词汇过滤api
-  regs: RegExp[]; // 正则表达式
+  regs: string[]; // 正则表达式
   removeSpaceLangs: string[]; // 需要移除空格的语言
 }
 

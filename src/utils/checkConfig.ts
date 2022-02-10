@@ -1,4 +1,5 @@
-import CONFIG from "./config";
+import CONFIG from "../../config.json";
+
 function checkServerConfig(part: any) {
   if (!part.listen) {
     console.warn("serviceConfig.listen 未配置，使用默认值0.0.0.0");

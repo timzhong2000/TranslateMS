@@ -6,6 +6,11 @@ datasource db {
   url      = env("SQLITE_FILE")
 }
 
+model Account {
+  key     String @id
+  balance Int    @default(0) // 余额
+}
+
 model Translate {
   hash     String
   src      String

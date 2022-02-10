@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 
-import CONFIG from "./utils/config";
+import CONFIG from "../config.json";
 
 import info from "./routers/info";
 import baidu from "./routers/baidu";
@@ -15,7 +15,6 @@ import niutransapi from "./routers/niutransapi";
 import serviceDiscovery from "./routers/serviceDiscovery";
 
 import checkConfig from "./utils/checkConfig";
-import { verifyKey } from "./utils/verifyKey";
 
 checkConfig();
 // express初始化
@@ -31,9 +30,6 @@ app.use(morgan("combined"));
 // post body
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: "1mb" }));
-
-// 简单鉴权
-app.use(verifyKey);
 
 // 路由
 app.use("/api/info", info);
