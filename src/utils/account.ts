@@ -6,16 +6,16 @@ import { msgBody } from "./msgBody";
 const db = new PrismaClient();
 
 export class Account {
-  constructor(private key: string) {}
+  constructor(private key: string) { }
 
+  // 如果账户不存在返回0额度
   async getBalance() {
-    return (
-      await db.account.findUnique({
-        where: {
-          key: this.key,
-        },
-      })
-    ).balance;
+    const account = await db.account.findUnique({
+      where: {
+        key: this.key,
+      },
+    });
+    return account ? account.balance : 0;
   }
 
   async consume(count: number) {
