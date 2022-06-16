@@ -100,3 +100,6 @@ prisma/*
 
 # Keep environment variables out of version control
 .env
+
+# config
+config.json

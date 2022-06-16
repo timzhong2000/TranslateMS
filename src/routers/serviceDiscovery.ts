@@ -5,6 +5,7 @@
 
 import fs from "fs";
 import express from "express";
+require("express-async-errors");
 
 const router = express.Router();
 

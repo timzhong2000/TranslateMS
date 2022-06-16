@@ -4,6 +4,7 @@
  */
 
 import express from "express";
+require("express-async-errors");
 import CONFIG from "../../config.json";
 
 import { BaiduTranslatorCrawler } from "../translator/translateEngines/baiduTranslatorCrawler";

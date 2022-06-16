@@ -1,7 +1,7 @@
 import express from "express";
+require("express-async-errors");
 import cors from "cors";
 import morgan from "morgan";
-
 import CONFIG from "../config.json";
 
 import info from "./routers/info";
@@ -16,6 +16,7 @@ import niutransapi from "./routers/niutransapi";
 import serviceDiscovery from "./routers/serviceDiscovery";
 
 import checkConfig from "./utils/checkConfig";
+import { expressGlobalErrorHandler } from "./utils/Error";
 
 checkConfig();
 // express初始化
@@ -44,6 +45,8 @@ app.use("/api/xunfeiapi", xunfeiapi);
 app.use("/api/niutransapi", niutransapi);
 
 app.use("/api/servicediscovery", serviceDiscovery);
+
+app.use(expressGlobalErrorHandler);
 
 // express启动配置
 const PORT = CONFIG.serverConfig.port;

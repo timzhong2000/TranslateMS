@@ -4,6 +4,7 @@
  */
 
 import express, { Request, Response } from "express";
+require("express-async-errors");
 import CONFIG from "../../config.json";
 
 import { msgBody } from "../utils/msgBody";
