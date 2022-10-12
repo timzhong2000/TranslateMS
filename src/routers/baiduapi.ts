@@ -10,7 +10,7 @@ import CONFIG from "../../config.json";
 import { BaiduTranslatorAPI } from "../translator/translateEngines/baiduTranslatorApi";
 import { DefaultTranslatorManager } from "../translator/translateManager/DefaultTranslatorManager";
 import { DefaultFilter } from "../translator/filter/filter";
-import { LangList } from "../translator/langlist";
+import { LangList } from "../translator/languageAdapter";
 import { msgBody } from "../utils/msgBody";
 import { PrismaCache } from "../translator/cacheEngines/prismaCache";
 import { Account, checkBalance } from "../utils/account";

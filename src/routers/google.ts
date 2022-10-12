@@ -10,7 +10,7 @@ import CONFIG from "../../config.json";
 import { DefaultTranslatorManager } from "../translator/translateManager/DefaultTranslatorManager";
 import { DefaultFilter } from "../translator/filter/filter";
 import { GoogleTranslatorCrawler } from "../translator/translateEngines/googleTranslatorCrawler";
-import { LangList } from "../translator/langlist";
+import { LangList } from "../translator/languageAdapter";
 import { PrismaCache } from "../translator/cacheEngines/prismaCache";
 import { msgBody } from "../utils/msgBody";
 import { Account, checkBalance } from "../utils/account";

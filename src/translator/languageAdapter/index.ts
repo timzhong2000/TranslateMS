@@ -1,4 +1,4 @@
-import ISO639_1 from "../types/ISO963";
+import ISO639_1 from "../../types/ISO963";
 
 export const LangList: {
   src: { name: string; value: ISO639_1 }[];

@@ -9,7 +9,7 @@ import CONFIG from "../../config.json";
 
 import { DefaultTranslatorManager } from "../translator/translateManager/DefaultTranslatorManager";
 import { DefaultFilter } from "../translator/filter/filter";
-import { LangList } from "../translator/langlist";
+import { LangList } from "../translator/languageAdapter";
 import { msgBody } from "../utils/msgBody";
 import { PrismaCache } from "../translator/cacheEngines/prismaCache";
 import { XunfeiTranslatorAPI } from "../translator/translateEngines/xunfeiTranslatorApi";
