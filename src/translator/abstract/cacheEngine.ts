@@ -8,13 +8,13 @@ import { CacheIdentity, Payload } from "../../types/Translator";
 export abstract class CacheEngine {
   serivceProviderName = "unknown"; // 服务提供商名称
 
-  abstract fetch(
+  abstract get(
     src: string,
     srcLang: string,
     destLang: string
   ): Promise<Payload>;
 
-  abstract insert(dest: Payload): void;
+  abstract set(dest: Payload): void;
 
   static hash(str: string): string {
     return md5(str);

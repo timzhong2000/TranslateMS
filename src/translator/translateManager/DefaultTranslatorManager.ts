@@ -91,7 +91,7 @@ export class DefaultTranslatorManager extends TranslateManager {
   }
 
   writeCache(dest: Payload): void {
-    this.cacheEngine.insert(dest);
+    this.cacheEngine.set(dest);
   }
 
   async readCache(
@@ -99,6 +99,6 @@ export class DefaultTranslatorManager extends TranslateManager {
     srcLang: string,
     destLang: string
   ): Promise<Payload> {
-    return this.cacheEngine.fetch(src, srcLang, destLang);
+    return this.cacheEngine.get(src, srcLang, destLang);
   }
 }

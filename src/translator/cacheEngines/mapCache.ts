@@ -9,7 +9,7 @@ export class MapCache extends CacheEngine {
     super();
   }
 
-  async fetch(
+  async get(
     src: string,
     srcLang: string,
     destLang: string
@@ -29,7 +29,7 @@ export class MapCache extends CacheEngine {
     );
   }
 
-  insert(payload: Payload): void {
+  set(payload: Payload): void {
     const hashKey = CacheEngine.generateHashKey(
       payload.src,
       payload.srcLang,

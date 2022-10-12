@@ -11,7 +11,7 @@ export class PrismaCache extends CacheEngine {
     super();
   }
 
-  async fetch(src: string, srcLang: string, destLang: string) {
+  async get(src: string, srcLang: string, destLang: string) {
     const result = await this.db.translate.findUnique({
       where: {
         hash_provider: {
@@ -32,7 +32,7 @@ export class PrismaCache extends CacheEngine {
     );
   }
 
-  async insert(payload: Payload) {
+  async set(payload: Payload) {
     const hashKey = CacheEngine.generateHashKey(
       payload.src,
       payload.srcLang,
