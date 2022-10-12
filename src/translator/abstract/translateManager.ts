@@ -13,12 +13,15 @@ export abstract class TranslateManager<CacheType> {
     protected translateEngine: TranslateEngine,
     protected cacheEngine: CacheEngine<CacheType>,
     protected filter: DefaultFilter
-  ) {
-    if (!translateEngine || !cacheEngine) {
-      throw new Error("translateEngine or cacheEngine missing");
-    }
-  }
+  ) {}
 
+  /**
+   * 翻译函数，进行过滤与缓存
+   * @param src 源文本
+   * @param srcLang 源语言
+   * @param destLang 目标语言
+   * @returns `Promise<Payload>` 翻译结果
+   */
   abstract translate(
     src: string,
     srcLang: string,
@@ -26,6 +29,5 @@ export abstract class TranslateManager<CacheType> {
   ): Promise<Payload>;
 
   abstract writeCache(dest: Payload): void;
-
   abstract readCache(src: string, srcLang: string, destLang: string): void;
 }

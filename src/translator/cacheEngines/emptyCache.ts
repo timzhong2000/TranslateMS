@@ -11,11 +11,11 @@ export class EmptyCache extends CacheEngine<null> {
     super();
   }
 
-  fetch(src: string, srcLang: string, destLang: string): Promise<Payload> {
+  fetch(): Promise<Payload> {
     throw new Error("MISS");
   }
 
-  insert(dest: Payload): void {
+  insert(): void {
     return;
   }
 }

@@ -19,7 +19,6 @@ export class DefaultFilter {
    * @returns
    */
   exec(text: string, lang: string): FilterResult {
-    text = decodeURI(text);
     let pass = true;
 
     if (this.config.removeSpaceLangs.indexOf(lang) >= 0) {
@@ -27,12 +26,8 @@ export class DefaultFilter {
     }
 
     // 1. prefix filter
-    this.config.banPrefixs.forEach((prefix) => {
-      if (text.startsWith(prefix)) {
-        pass = false;
-      }
-    });
-    if (!pass) {
+    if (!this.config.banPrefixs.every((prefix) => !text.startsWith(prefix))) {
+      // text start with some prefix
       return {
         type: FilterType.PROXY,
         text: "",
@@ -40,12 +35,8 @@ export class DefaultFilter {
     }
 
     // 2. words filter
-    this.config.banWords.forEach((word) => {
-      if (text.indexOf(word) > 0) {
-        pass = false;
-      }
-    });
-    if (!pass) {
+    if (!this.config.banWords.every((word) => !text.includes(word))) {
+      // text include some banWrods
       return {
         type: FilterType.BLOCK,
         text: "词汇违规",
@@ -53,20 +44,13 @@ export class DefaultFilter {
     }
 
     // 3. reg filter
-    this.config.regs.forEach((regStr) => {
-      const reg = RegExp(regStr);
-      if (reg.test(text)) {
-        pass = false;
-      }
-    });
-    if (!pass) {
+    if (!this.config.regs.every((regStr) => !RegExp(regStr).test(text))) {
+      // text match some blacklist regs
       return {
         type: FilterType.BLOCK,
         text: "词汇违规",
       } as FilterResult;
     }
-
-    // 4. api filter (disbale
 
     return {
       type: FilterType.PASS,

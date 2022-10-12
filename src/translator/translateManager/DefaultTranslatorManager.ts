@@ -21,13 +21,6 @@ export class DefaultTranslatorManager<
     super(translateEngine, cacheEngine, filter);
   }
 
-  /**
-   * 翻译函数，进行过滤与缓存
-   * @param src 源文本
-   * @param srcLang 源语言
-   * @param destLang 目标语言
-   * @returns `Promise<Payload>` 翻译结果
-   */
   async translate(
     src: string,
     srcLang: string,

@@ -5,7 +5,6 @@
 
 import md5 from "md5";
 import { CacheIdentity, Payload } from "../../types/Translator";
-
 export abstract class CacheEngine<T> {
   db: T = null; // 底层数据结构
   serivceProviderName = "unknown"; // 服务提供商名称
