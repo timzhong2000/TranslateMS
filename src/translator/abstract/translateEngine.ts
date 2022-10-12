@@ -13,5 +13,5 @@ export interface ITranslateEngine {
    * @returns {Promise<Payload>} 翻译结果
    */
   translate(src: string, srcLang: string, destLang: string): Promise<Payload>;
-  setConfig(config: any): void;
+  setConfig(config: unknown): void;
 }

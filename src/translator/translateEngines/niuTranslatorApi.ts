@@ -22,12 +22,8 @@ export class NiutransTranslatorAPI implements ITranslateEngine {
   }
 
   constructor(private provider: string, config: NiutransAPIConfig) {
-    if (!!config) {
-      this.setConfig(config);
-      console.log(`api configurattion apply: ${config.APIKEY}`);
-    } else {
-      throw new Error("config should not be empty");
-    }
+    this.setConfig(config);
+    console.log(`api configurattion apply: ${config.APIKEY}`);
   }
 
   async translate(

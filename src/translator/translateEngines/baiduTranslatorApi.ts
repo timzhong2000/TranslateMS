@@ -6,31 +6,28 @@
 import axios from "axios";
 import md5 from "md5";
 import { ITranslateEngine } from "../abstract/translateEngine";
-import {
-  BaiduTranslatorAPIConfig,
-  TranslateLevel,
-} from "../../types/Translator";
+import { TranslateLevel } from "../../types/Translator";
 import { generatePayload } from "../../utils/generatePayload";
 import ISO639_1 from "../../types/ISO963";
 import { getBaiduLangCode } from "../../utils/LangCode";
+
+export interface BaiduTranslatorAPIConfig {
+  APPID: string;
+  KEY: string;
+}
 
 export class BaiduTranslatorAPI implements ITranslateEngine {
   private APPID: string;
   private KEY: string;
   private SALT = "1435660288";
-  private ttsEnabled: boolean;
 
   private get isConfigEmpty() {
     return this.APPID === "" && this.KEY === "";
   }
 
   constructor(private provider: string, config: BaiduTranslatorAPIConfig) {
-    if (!!config) {
-      this.setConfig(config);
-      console.log(`api configurattion apply: ${config.APPID}`);
-    } else {
-      throw new Error("config should not be empty");
-    }
+    this.setConfig(config);
+    console.log(`api configurattion apply: ${config.APPID}`);
   }
 
   /**
@@ -102,10 +99,7 @@ export class BaiduTranslatorAPI implements ITranslateEngine {
   }
 
   setConfig(config: BaiduTranslatorAPIConfig): void {
-    this.APPID = config.APPID;
-    this.KEY = config.KEY;
-    this.ttsEnabled = config.tts || false;
-    this.SALT = "1435660288";
+    ({ APPID: this.APPID, KEY: this.KEY } = config);
   }
 
   private sign(text: string) {

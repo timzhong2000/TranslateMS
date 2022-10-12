@@ -96,7 +96,7 @@ export class XunfeiTranslatorAPI implements ITranslateEngine {
   }
 
   // 请求获取请求体签名
-  getDigest(body: any) {
+  getDigest(body: unknown) {
     return (
       "SHA-256=" +
       CryptoJS.enc.Base64.stringify(CryptoJS.SHA256(JSON.stringify(body)))

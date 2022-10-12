@@ -193,7 +193,7 @@ export class BaiduTranslatorCrawler implements ITranslateEngine {
    * @returns sign
    */
   private getSign(src: string): string {
-    const a = (r: any) => {
+    const a = (r: unknown) => {
       if (Array.isArray(r)) {
         for (var o = 0, t = Array(r.length); o < r.length; o++) t[o] = r[o];
         return t;

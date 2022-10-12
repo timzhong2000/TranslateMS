@@ -10,15 +10,14 @@ import { generatePayload } from "../../utils/generatePayload";
 import ISO639_1 from "../../types/ISO963";
 import { getGoogleLangCode } from "../../utils/LangCode";
 
+export interface GoogleTranslatorConfig {
+  UA: string;
+}
 export class GoogleTranslatorCrawler implements ITranslateEngine {
-  UA = "";
+  private config: GoogleTranslatorConfig;
 
-  constructor(private provider: string, config: any) {
-    if (!!config) {
-      this.setConfig(config);
-    } else {
-      throw new Error("config should not be empty");
-    }
+  constructor(private provider: string, config: GoogleTranslatorConfig) {
+    this.setConfig(config);
   }
 
   async translate(
@@ -122,7 +121,7 @@ export class GoogleTranslatorCrawler implements ITranslateEngine {
   private getHeader() {
     return {
       "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-      "User-Agent": this.UA,
+      "User-Agent": this.config.UA,
       Host: "translate.google.cn",
       Origin: "https://translate.google.cn",
       Referer: "https://translate.google.cn/",
@@ -131,7 +130,8 @@ export class GoogleTranslatorCrawler implements ITranslateEngine {
     };
   }
 
-  setConfig(config: any): void {
-    this.UA = config.UA;
+  setConfig(config?: GoogleTranslatorConfig): void {
+    if (!config) throw new Error("config should not be empty");
+    this.config = config;
   }
 }
