@@ -6,11 +6,11 @@
 import { DefaultFilter } from "../filter/filter";
 import { Payload } from "../../types/Translator";
 import { CacheEngine } from "./cacheEngine";
-import { TranslateEngine } from "./translateEngine";
+import { ITranslateEngine } from "./translateEngine";
 
 export abstract class TranslateManager {
   constructor(
-    protected translateEngine: TranslateEngine,
+    protected translateEngine: ITranslateEngine,
     protected cacheEngine: CacheEngine,
     protected filter: DefaultFilter
   ) {}

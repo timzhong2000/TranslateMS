@@ -4,7 +4,7 @@
  */
 
 import axios from "axios";
-import { TranslateEngine } from "../abstract/translateEngine";
+import { ITranslateEngine } from "../abstract/translateEngine";
 import {
   TranslateLevel,
   CaiyunTranslatorAPIConfig,
@@ -12,10 +12,10 @@ import {
 import { generatePayload } from "../../utils/generatePayload";
 import ISO639_1 from "../../types/ISO963";
 
-export class CaiyunTranslatorAPI extends TranslateEngine {
+export class CaiyunTranslatorAPI implements ITranslateEngine {
   private token = "";
+  
   constructor(private provider: string, config: CaiyunTranslatorAPIConfig) {
-    super();
     if (!!config) {
       this.setConfig(config);
     } else {

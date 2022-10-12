@@ -5,7 +5,7 @@
 
 import axios from "axios";
 import CryptoJS from "crypto-js";
-import { TranslateEngine } from "../abstract/translateEngine";
+import { ITranslateEngine } from "../abstract/translateEngine";
 import {
   Payload,
   TranslateLevel,
@@ -15,7 +15,7 @@ import { generatePayload } from "../../utils/generatePayload";
 import ISO639_1 from "../../types/ISO963";
 import { getXunfeiLangCode } from "../../utils/LangCode";
 
-export class XunfeiTranslatorAPI extends TranslateEngine {
+export class XunfeiTranslatorAPI implements ITranslateEngine {
   api_key = "";
   apiSecret = "";
   app_id = "";
@@ -24,9 +24,9 @@ export class XunfeiTranslatorAPI extends TranslateEngine {
     private provider = "讯飞翻译API",
     config: XunfeiTranslatorAPIConfig
   ) {
-    super();
     this.setConfig(config);
   }
+
   async translate(
     src: string,
     srcLang: ISO639_1 = "ja",
@@ -76,7 +76,6 @@ export class XunfeiTranslatorAPI extends TranslateEngine {
     this.app_id = config.app_id;
   }
 
-  // 生成请求body
   getPostBody(text: string, from: string, to: string) {
     const digestObj = {
       //填充common

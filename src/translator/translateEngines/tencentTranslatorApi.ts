@@ -4,7 +4,7 @@
  */
 import { tmt } from "tencentcloud-sdk-nodejs";
 
-import { TranslateEngine } from "../abstract/translateEngine";
+import { ITranslateEngine } from "../abstract/translateEngine";
 import {
   Payload,
   TencentTranslatorAPIConfig,
@@ -16,15 +16,16 @@ import { getTencentLangCode } from "../../utils/LangCode";
 import { Client } from "tencentcloud-sdk-nodejs/tencentcloud/services/tmt/v20180321/tmt_client";
 import { TextTranslateRequest } from "tencentcloud-sdk-nodejs/tencentcloud/services/tmt/v20180321/tmt_models";
 
-export class TencentTranslatorAPI extends TranslateEngine {
+export class TencentTranslatorAPI implements ITranslateEngine {
   projectId: number;
   secretId: string;
   secretKey: string;
   client: Client;
+  
   constructor(private provider: string, config: TencentTranslatorAPIConfig) {
-    super();
     this.setConfig(config);
   }
+
   async translate(
     src: string,
     srcLang: ISO639_1 = "ja",

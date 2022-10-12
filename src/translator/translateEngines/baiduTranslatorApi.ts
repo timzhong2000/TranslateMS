@@ -5,7 +5,7 @@
 
 import axios from "axios";
 import md5 from "md5";
-import { TranslateEngine } from "../abstract/translateEngine";
+import { ITranslateEngine } from "../abstract/translateEngine";
 import {
   BaiduTranslatorAPIConfig,
   TranslateLevel,
@@ -14,7 +14,7 @@ import { generatePayload } from "../../utils/generatePayload";
 import ISO639_1 from "../../types/ISO963";
 import { getBaiduLangCode } from "../../utils/LangCode";
 
-export class BaiduTranslatorAPI extends TranslateEngine {
+export class BaiduTranslatorAPI implements ITranslateEngine {
   private APPID: string;
   private KEY: string;
   private SALT = "1435660288";
@@ -25,7 +25,6 @@ export class BaiduTranslatorAPI extends TranslateEngine {
   }
 
   constructor(private provider: string, config: BaiduTranslatorAPIConfig) {
-    super();
     if (!!config) {
       this.setConfig(config);
       console.log(`api configurattion apply: ${config.APPID}`);

@@ -5,7 +5,7 @@
 
 import axios from "axios";
 import qs from "qs";
-import { TranslateEngine } from "../abstract/translateEngine";
+import { ITranslateEngine } from "../abstract/translateEngine";
 import {
   BaiduTranslatorConfig,
   BaiduPayload,
@@ -15,7 +15,7 @@ import { generatePayload } from "../../utils/generatePayload";
 import { getBaiduLangCode } from "../../utils/LangCode";
 import ISO639_1 from "../../types/ISO963";
 
-export class BaiduTranslatorCrawler extends TranslateEngine {
+export class BaiduTranslatorCrawler implements ITranslateEngine {
   configReady = false;
   gtk: string = null;
   cookie: string = null;
@@ -26,7 +26,6 @@ export class BaiduTranslatorCrawler extends TranslateEngine {
    * @param config 百度翻译配置
    */
   constructor(private provider: string, config?: BaiduTranslatorConfig) {
-    super();
     if (!!config) {
       this.configReady = true;
       this.setConfig(config);

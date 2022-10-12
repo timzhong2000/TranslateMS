@@ -4,7 +4,7 @@
  */
 
 import { CacheEngine } from "../abstract/cacheEngine";
-import { TranslateEngine } from "../abstract/translateEngine";
+import { ITranslateEngine } from "../abstract/translateEngine";
 import { TranslateManager } from "../abstract/translateManager";
 import { DefaultFilter } from "../filter/filter";
 import { FilterType, Payload, TranslateLevel } from "../../types/Translator";
@@ -12,7 +12,7 @@ import { generatePayload } from "../../utils/generatePayload";
 
 export class DefaultTranslatorManager extends TranslateManager {
   constructor(
-    translateEngine: TranslateEngine,
+    translateEngine: ITranslateEngine,
     cacheEngine: CacheEngine,
     filter: DefaultFilter
   ) {

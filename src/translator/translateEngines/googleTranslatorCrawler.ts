@@ -4,17 +4,16 @@
  */
 
 import axios from "axios";
-import { TranslateEngine } from "../abstract/translateEngine";
+import { ITranslateEngine } from "../abstract/translateEngine";
 import { Payload, TranslateLevel } from "../../types/Translator";
 import { generatePayload } from "../../utils/generatePayload";
 import ISO639_1 from "../../types/ISO963";
 import { getGoogleLangCode } from "../../utils/LangCode";
 
-export class GoogleTranslatorCrawler extends TranslateEngine {
+export class GoogleTranslatorCrawler implements ITranslateEngine {
   UA = "";
 
   constructor(private provider: string, config: any) {
-    super();
     if (!!config) {
       this.setConfig(config);
     } else {
@@ -22,13 +21,6 @@ export class GoogleTranslatorCrawler extends TranslateEngine {
     }
   }
 
-  /**
-   * 请求翻译接口
-   * @param src 源文本
-   * @param srcLang 源语言
-   * @param destLang 目标语言
-   * @returns `Promise<Payload>` 翻译结果
-   */
   async translate(
     src: string,
     srcLang: ISO639_1 = "en",

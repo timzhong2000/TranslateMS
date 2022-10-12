@@ -4,7 +4,7 @@
  */
 
 import axios from "axios";
-import { TranslateEngine } from "../abstract/translateEngine";
+import { ITranslateEngine } from "../abstract/translateEngine";
 import {
   NiutransAPIConfig,
   NiutransPayload,
@@ -14,7 +14,7 @@ import { generatePayload } from "../../utils/generatePayload";
 import ISO639_1 from "../../types/ISO963";
 import { getNiutransLangCode } from "../../utils/LangCode";
 
-export class NiutransTranslatorAPI extends TranslateEngine {
+export class NiutransTranslatorAPI implements ITranslateEngine {
   private APIKEY: string = "";
 
   private get isConfigEmpty() {
@@ -22,7 +22,6 @@ export class NiutransTranslatorAPI extends TranslateEngine {
   }
 
   constructor(private provider: string, config: NiutransAPIConfig) {
-    super();
     if (!!config) {
       this.setConfig(config);
       console.log(`api configurattion apply: ${config.APIKEY}`);
@@ -31,13 +30,6 @@ export class NiutransTranslatorAPI extends TranslateEngine {
     }
   }
 
-  /**
-   * 请求翻译接口
-   * @param src 源文本
-   * @param srcLang 源语言
-   * @param destLang 目标语言
-   * @returns `Promise<Payload>` 翻译结果
-   */
   async translate(
     src: string,
     srcLang: ISO639_1 = "ja",
