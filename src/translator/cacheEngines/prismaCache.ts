@@ -4,10 +4,11 @@ import { USER } from "../../types/User";
 import { generatePayload } from "../../utils/generatePayload";
 import { CacheEngine } from "../abstract/cacheEngine";
 
-export class PrismaCache extends CacheEngine<PrismaClient> {
+export class PrismaCache extends CacheEngine {
+  private db = new PrismaClient();
+
   constructor(private provider: string) {
     super();
-    this.db = new PrismaClient();
   }
 
   async fetch(src: string, srcLang: string, destLang: string) {
@@ -59,19 +60,5 @@ export class PrismaCache extends CacheEngine<PrismaClient> {
       },
     });
     return result;
-  }
-
-  resultToPayload(results: Translate[]) {
-    return results.map((result) =>
-      generatePayload(
-        true,
-        result.level,
-        result.src,
-        result.dest,
-        result.srcLang,
-        result.destLang,
-        this.provider
-      )
-    );
   }
 }

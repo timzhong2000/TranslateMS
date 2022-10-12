@@ -8,10 +8,10 @@ import { Payload } from "../../types/Translator";
 import { CacheEngine } from "./cacheEngine";
 import { TranslateEngine } from "./translateEngine";
 
-export abstract class TranslateManager<CacheType> {
+export abstract class TranslateManager {
   constructor(
     protected translateEngine: TranslateEngine,
-    protected cacheEngine: CacheEngine<CacheType>,
+    protected cacheEngine: CacheEngine,
     protected filter: DefaultFilter
   ) {}
 

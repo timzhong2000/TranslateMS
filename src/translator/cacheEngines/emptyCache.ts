@@ -6,7 +6,7 @@
 import { CacheEngine } from "../abstract/cacheEngine";
 import { Payload } from "../../types/Translator";
 
-export class EmptyCache extends CacheEngine<null> {
+export class EmptyCache extends CacheEngine {
   constructor() {
     super();
   }

@@ -10,12 +10,10 @@ import { DefaultFilter } from "../filter/filter";
 import { FilterType, Payload, TranslateLevel } from "../../types/Translator";
 import { generatePayload } from "../../utils/generatePayload";
 
-export class DefaultTranslatorManager<
-  CacheType
-> extends TranslateManager<CacheType> {
+export class DefaultTranslatorManager extends TranslateManager {
   constructor(
     translateEngine: TranslateEngine,
-    cacheEngine: CacheEngine<CacheType>,
+    cacheEngine: CacheEngine,
     filter: DefaultFilter
   ) {
     super(translateEngine, cacheEngine, filter);
